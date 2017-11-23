@@ -19,7 +19,7 @@ interface Message {
   data?: string;
 }
 
-class Block {
+export class Block {
   constructor(public index: number,
     public previousHash: string,
     public timestamp: number,
