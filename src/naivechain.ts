@@ -6,7 +6,7 @@ import * as WebSocket from "ws";
 const http_port = process.env.HTTP_PORT || 3001;
 const p2p_port = parseInt(process.env.P2P_PORT || "", 10) || 6001;
 const { PEERS } = process.env;
-const initialPeers = PEERS ? PEERS.split(',') : [];
+export const initialPeers = PEERS ? PEERS.split(',') : [];
 
 enum MessageType {
   QUERY_LATEST = 0,
@@ -42,7 +42,7 @@ const getGenesisBlock = () => {
 
 var blockchain = [getGenesisBlock()];
 
-const initHttpServer = () => {
+export const initHttpServer = () => {
   const app = express();
   app.use(bodyParser.json());
 
@@ -66,7 +66,7 @@ const initHttpServer = () => {
 };
 
 
-const initP2PServer = () => {
+export const initP2PServer = () => {
   const server = new WebSocket.Server({ port: p2p_port });
   server.on('connection', (ws: WebSocket) => initConnection(ws));
   console.log('listening websocket p2p port on: ' + p2p_port);
@@ -151,7 +151,7 @@ const isValidNewBlock = (newBlock: Block, previousBlock: Block) => {
   return true;
 };
 
-const connectToPeers = (newPeers: string[]) => {
+export const connectToPeers = (newPeers: string[]) => {
   newPeers.forEach((peer) => {
     const ws = new WebSocket(peer);
     ws.on('open', () => initConnection(ws));
@@ -230,7 +230,3 @@ const write =
   (ws: WebSocket, message: Message) => ws.send(JSON.stringify(message));
 const broadcast =
   (message: Message) => sockets.forEach(socket => write(socket, message));
-
-connectToPeers(initialPeers);
-initHttpServer();
-initP2PServer();
