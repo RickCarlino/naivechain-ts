@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "start": "node main.js"
+    "start": "node dist/main.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",

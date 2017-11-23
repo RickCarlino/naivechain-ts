@@ -13,5 +13,23 @@ describe("Block", () => {
     expect(block.data).toEqual("my genesis block!!");
     expect(block.hash)
       .toEqual("816534932c2b7154836da6afc367695e6337db8a921823784c14378abed4f7d7");
-  })
-})
+  });
+});
+
+describe("isValidChain", () => {
+  it("Validates an empty chain", () => {
+
+  });
+});
+
+describe("getGenesisBlock", () => {
+  it("needs tests");
+});
+
+describe("getLatestBlock", () => {
+  it("needs tests");
+});
+
+describe("handleBlockchainResponse", () => {
+  it("needs tests");
+});
