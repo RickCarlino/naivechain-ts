@@ -1,5 +1,19 @@
 # Naivechain TS - Typescript port of Naivechain
 
+### What Is This?
+
+I (Rick Carlino) have ported @lhartikk's [Naivechain](https://github.com/lhartikk/naivechain) project to Typescript.
+
+Naivechain is an easy-to-understand blockchain in 200 lines of code. Porting it to Typescript (IMHO) makes it even easier to understand. All credit for this great work goes to the [original author](https://github.com/lhartikk).
+
+### What's Different in This Fork?
+
+ * Ported `main.js` to Typescript as `main.ts`.
+ * Moved non-init functions into `naivechain.ts`.
+ * Added a test command: `npm run test`.
+
+---
+
 ### Motivation
 
 All the current implementations of blockchains are tightly coupled with the larger context and problems they (e.g. Bitcoin or Ethereum) are trying to solve. This makes understanding blockchains a necessarily harder task, than it must be. Especially source-code-wisely. This project is an attempt to provide as concise and simple implementation of a blockchain as possible.
@@ -52,15 +66,21 @@ curl -H "Content-type:application/json" --data '{"data" : "Some data to the firs
 ```
 curl http://localhost:3001/blocks
 ```
+
 ##### Create block
+
 ```
 curl -H "Content-type:application/json" --data '{"data" : "Some data to the first block"}' http://localhost:3001/mineBlock
 ```
+
 ##### Add peer
+
 ```
 curl -H "Content-type:application/json" --data '{"peer" : "ws://localhost:6001"}' http://localhost:3001/addPeer
 ```
+
 #### Query connected peers
+
 ```
 curl http://localhost:3001/peers
 ```
